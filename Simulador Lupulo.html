@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro Sprint</title>
+</head>
+<body>
+    Informe o valor de venda do lúpulo por KG<br>
+    <input id="input_valorKG"><br>
+        Informe o tamanho da área em M²<br>
+    <input id="input_AreaMetro"><br> <b>OU</b><br>
+    Informe o tamanho da área em Hectares<br>
+    <input id="input_AreaHectares"><br>
+
+    <button onclick="Possuir()"> Já possuo Iluminação Artificial</button>
+    <button onclick="NaoPossuir()"> Não possuo Iluminação Artificial</button>
+    <div id="div_possui"></div>
+
+
+</body>
+</html>
+<script>
+    function Possuir(){
+        var area = Number(input_AreaHectares.value);
+        var metroQuadrado = Number(input_AreaMetro.value);
+        var valorKG = Number(input_valorKG.value);
+        if(metroQuadrado > 0){
+            area = metroQuadrado / 10000;
+        }
+        var producaoIdeal = area * 3400;
+        var lucro = valorKG * producaoIdeal;
+        div_possui.innerHTML = `Parabéns pela produção atual! Mas ainda é possível melhorar! Com nosso produto, sua produção pode chegar a ${producaoIdeal}KGs por ano <br>`
+        div_possui.innerHTML += `Com esse número de produção, seu lucro pode chegar a R$${lucro} reais ao ano`
+       
+
+    }
+    function NaoPossuir(){
+        var area = Number(input_AreaHectares.value);
+        var metroQuadrado = Number(input_AreaMetro.value);
+        var valorKG = Number(input_valorKG.value);
+        if(metroQuadrado > 0){
+            area = metroQuadrado / 10000;
+        }
+        var producaoBoa = area * 2400;
+        var lucro = valorKG * producaoBoa;
+        div_possui.innerHTML = `Ficamos felizes pelo seu interesse em iluminação Artificial. Com nosso produto, você pode produzir até 3 vezes o número da produção atual, podendo chegar a ${producaoBoa} KGs por ano <br>`
+        div_possui.innerHTML += `Com esse número de produção, seu lucro pode chegar a R$${lucro} reais ao ano`
+
+    }
+</script>
